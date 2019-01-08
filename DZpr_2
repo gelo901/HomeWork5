@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>Документ без названия</title>
+          
+    </head>
+    <body>
+   <script>
+	
+	var cardnumb = "5168b7 5-541/62283ыва08 ";
+
+
+   var a = cardnumb.split('');
+   var b = a.filter( item => "0123456789".indexOf(item) != -1 );
+   b = b.join('');
+   
+   cardnumb = b
+
+
+function luneAlgorithm(digits) {
+ var sum = 0;
+ for (var i = 0; i < digits.length; i++) {
+   var cardNum = parseInt(digits[i]);
+
+   if (i % 2 === 0) {
+     cardNum = cardNum * 2;
+
+     if (cardNum > 9) {
+       cardNum = cardNum - 9;
+     }
+   }
+
+   sum = sum + cardNum;
+ }
+
+ return sum % 10 === 0;
+};
+var result = luneAlgorithm(cardnumb);
+
+
+	
+
+
+
+	var resultStr = String(cardnumb);
+	
+
+	
+
+
+
+  function card(){
+
+	
+		
+		regV1 = /(51|52|52|53|54|55)/,
+		Mster_cart = resultStr.search(regV1);
+	
+	var regV2 = /(50|56|58|639|67)/,
+		Mestro = resultStr.search(regV2);
+	
+	var regV3 = /^62./,
+		UnionPay = resultStr.search(regV3);
+	
+	var regV4 = /(6011|6521|6522)/,
+		DicoverCard = resultStr.search(regV4);
+	
+	var regV5 = /^\d{3}/i,
+		DinersClub = resultStr.search(regV5);
+		DinersClub1 = resultStr.match(regV5);
+	
+	var regV6 = /^\d{4}/i,
+		JCB = resultStr.search(regV6);
+		JCB1 = resultStr.match(regV6);
+
+
+
+
+		if(Mster_cart === 0){
+			return 'Master Card!';
+
+		} else if(Mestro === 0){
+			return'Mestro!';
+
+		}
+		else if(UnionPay === 0){
+			return'UnionPay!';
+
+		}
+		else if(DicoverCard === 0){
+			console.log('DicoverCard!');
+
+		} 
+		else if((DinersClub === 0 )&&(DinersClub1 <= 305 && DinersClub1 >= 300)){
+			return'DinersClub!';
+		}
+		else if((JCB === 0 )&&(JCB1 >= 3528 && JCB1 <= 3589)){
+			return'JCB!';
+		}
+
+		else {
+			return'erorr!';
+		}
+
+
+	}
+	
+
+
+	var obj = {
+
+		card         : `${b}`,
+		correkt      : `${result}`,
+		pyment_system:card(),
+		accepted     : `${result}`,
+
+
+
+
+
+	}
+
+
+console.log(obj)
+
+
+    </script>
+    </body>
+</html>
