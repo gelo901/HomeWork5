@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   
+
+    <title>Hello, world!</title>
+	<style>
+	
+		
+	</style>
+  </head>
+  <body>
+   
+
+  
+<script type="text/javascript">
+	
+var inn      = `3415614314`,
+	dataInn,
+	dataInnRES,
+	sexInn   = inn[8],
+	DATA;
+
+	inn      = inn.replace(/\s+/g,'').trim();
+
+
+function corekt(){
+var contr    = (inn[0]*2)+(inn[1]*4)+(inn[2]*10)+(inn[3]*3)+(inn[4]*5)+(inn[5]*9)+(inn[6]*4)+(inn[7]*6)+(inn[8]*8),
+	contr1   = contr / 11,
+	contrOkr = Math.floor(contr1),
+	contr2   = (contr1 - contrOkr) * 11,
+	contr2   = Math.floor(contr2);
+
+	if(contr2 == inn[9]){return `true`;}else{return `false`;}
+
+
+}	  
+
+
+
+function dataN(){
+dataInnRES = inn[0] + inn[1] + inn[2] + inn[3] + inn[4];
+dataInn    = +dataInnRES;
+DATA       = new Date(1899,11,31)
+millDaT    = DATA.getTime();
+dayDAT     = (dataInn * 1000 * 60 * 60 * 24) + millDaT
+
+DATA1      = new Date(dayDAT)
+
+var year   = DATA1.getFullYear(),
+	mons   = DATA1.getMonth() + 1,
+	day    = DATA1.getDate();
+	if(mons < 10){
+	 mons  = '0'+mons; 
+	}
+	if(day < 10){
+	 day   = '0'+ day; 
+	}
+
+return [day, mons, year];		
+
+}
+
+
+var DaTaUS = dataN()
+
+
+
+
+function sex(){
+	if(+sexInn % 2 == 0){
+		return `женщина`
+	}
+	else{
+		return `мужчина`
+	}
+
+
+}
+
+
+
+function age(){
+	var now  = new Date(),
+	    year = now.getFullYear();
+	    year = year - DaTaUS[2]
+		
+	    if(year < 1){
+		return;
+		}else{
+		return year; 
+
+		}
+
+}
+
+
+
+
+var obj = {
+	inn: inn,
+	corekti: corekt(),
+	sex: sex(),
+	born:`${DaTaUS[0]}.${DaTaUS[1]}.${DaTaUS[2]}`,
+	ages:age()
+
+}
+
+console.log(obj)
+
+</script>
+  </body>
+</html>        
+
+
